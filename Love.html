@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>You Said YES ❤️</title>
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body{
+            margin:0;
+            height:100vh;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            font-family:'Great Vibes', cursive;
+            background: linear-gradient(135deg,#89f7fe,#ff9ecf);
+            overflow:hidden;
+  
+        }
+
+        
+        .card{
+            background: rgba(255,255,255,0.2);
+            padding:40px;
+            border-radius:20px;
+            backdrop-filter: blur(15px);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+            text-align:center;
+            color:#FF6F91;
+            width:350px;
+            animation: fadeIn 1.5s ease;
+        }
+
+        h1{
+            font-size:28px;
+            margin-bottom:20px;
+        }
+
+        p{
+            font-size:16px;
+            line-height:1.6;
+        }
+
+        button{
+            margin-top:25px;
+            padding:12px 30px;
+            border:none;
+            border-radius:25px;
+            background:#ff4d88;
+            color:white;
+            font-size:16px;
+            cursor:pointer;
+            transition:0.3s;
+        }
+
+        button:hover{
+            background:#ff1a66;
+        }
+
+        @keyframes fadeIn{
+            from{opacity:0; transform:scale(0.8);}
+            to{opacity:1; transform:scale(1);}
+        }
+
+        /* Floating hearts */
+        .heart{
+            position:absolute;
+            bottom:-20px;
+            animation: float 6s linear infinite;
+        }
+
+        @keyframes float{
+            0%{transform:translateY(0);opacity:1;}
+            100%{transform:translateY(-800px);opacity:0;}
+        }
+    </style>
+</head>
+<body>
+
+<div class="card">
+    <h1>💖 You said YES 💖</h1>
+    <p>
+        Every heartbeats is yours.<br>
+        If kisses were stars,I'd give you the whole sky.<br>
+        Happy Valentine's Day 💕
+    </p>
+    <button onclick="loveAlert()">I love you ❤️</button>
+</div>
+
+<script>
+    function loveAlert(){
+        alert("Forever and Always ❤️🥰");
+    }
+
+    // Floating hearts
+    function createHeart(){
+        const heart = document.createElement("div");
+        heart.classList.add("heart");
+        heart.innerHTML = "💗";
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.fontSize = Math.random() * 20 + 15 + "px";
+        heart.style.animationDuration = Math.random() * 3 + 3 + "s";
+        document.body.appendChild(heart);
+
+        setTimeout(() => heart.remove(), 6000);
+    }
+
+    setInterval(createHeart, 300);
+</script>
+
+</body>
+</html>

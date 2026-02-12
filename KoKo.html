@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Be My Valentine ❤️</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <style>
+        body{
+    margin:0;
+    overflow:hidden;
+    text-align:center;
+    font-family:Arial;
+    background-color: #ffd6e7;   /* one single color */
+}
+        /* Container (NO animation here) */
+        .title-box{
+    margin-top:250px;
+    padding:30px 60px;
+    border-radius:25px;
+    background: #e49cae; /* soft muted rose */
+    display:inline-block;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2); /* subtle shadow for elegance */
+}
+
+        /* TEXT animation only */
+        .title-text{
+    font-family: 'Dancing Script', cursive; /* or 'Playfair Display', serif */
+    font-size:45px;
+    color:black;
+    animation: glowText 2s ease-in-out infinite alternate,
+               floatText 3s ease-in-out infinite;
+}
+
+        @keyframes glowText{
+            from{ text-shadow: 0 0 5px #fff; }
+            to{ text-shadow: 0 0 25px #ffffff, 0 0 40px #ff99cc; }
+        }
+
+        @keyframes floatText{
+            0%{transform: translateY(0px);}
+            50%{transform: translateY(-10px);}
+            100%{transform: translateY(0px);}
+        }
+
+        button{
+    padding: 15px 35px;
+    font-size: 18px;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+}
+
+#yes{
+    background:#ff2e7a;
+    color:white;
+    transition: 0.3s;
+}
+
+#yes:hover{
+    background:#ff0055;
+}
+
+        #no{
+            background:#ff99bb;
+            color:white;
+            position:absolute;
+        }
+
+        /* Floating hearts */
+        .heart{
+            position:absolute;
+            bottom:-20px;
+            animation: float 6s linear infinite;
+        }
+
+        @keyframes float{
+            0%{transform:translateY(0);opacity:1;}
+            100%{transform:translateY(-800px);opacity:0;}
+        }
+    </style>
+</head>
+<body>
+
+<div class="title-box">
+    <div class="title-text">
+        Will you be my Valentine? 💕
+    </div>
+</div>
+
+<br><br>
+
+<button id="yes" onclick="nextPage()">Yes ❤️</button>
+<button id="no">No 💔</button>
+
+<script>
+    function nextPage(){
+        window.location.href = "love.html";
+    }
+
+    const noBtn = document.getElementById("no");
+    noBtn.addEventListener("mouseover", function(){
+        const x = Math.random() * (window.innerWidth - 100);
+        const y = Math.random() * (window.innerHeight - 50);
+        noBtn.style.left = x + "px";
+        noBtn.style.top = y + "px";
+    });
+
+    function createHeart(){
+        const heart = document.createElement("div");
+        heart.classList.add("heart");
+        heart.innerHTML = "💗";
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.fontSize = Math.random() * 20 + 15 + "px";
+        heart.style.animationDuration = Math.random() * 3 + 3 + "s";
+        document.body.appendChild(heart);
+
+        setTimeout(() => heart.remove(), 6000);
+    }
+
+    setInterval(createHeart, 300);
+</script>
+
+</body>
+</html>
